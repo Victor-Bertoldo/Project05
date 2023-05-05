@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --ff-texting: 'Epilogue', sans-serif;
+  
+  --hue: 250;
+  --fc-primary: hsl(var(--hue), 0%, 100%);
+  --fc-secondary-dark: hsl(var(--hue), 22%, 20%);
+  --fc-secondary: hsl(var(--hue), 50%, 80%);
+
+  --fs-body: 1.6rem;
+  --fs-heading: 4rem;
+  --fs-heading-sm: clamp(3rem, 0.5rem + 4vw, 4rem);
+}
+
+body {
+  font-family: var(--ff-texting);
+  
+  background-color: var(--fc-secondary-dark);
+  color: var(--fc-primary);
+}
+
+.page {
+  max-width: clamp(33rem, 30rem + 60vw, 117rem);
+  padding: 0 5rem 6rem;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+header {
+  margin: 10rem 0 8rem;
+
+  text-align: center;
+  
+  animation: topdown 1s;
+}
+
+header p{
+  color: var(--fc-secondary);
+  text-transform: uppercase;
+
+  line-height: 3.2rem;
+  letter-spacing: 3px;
+  
+  font-weight: 400;
+
+  margin-bottom: 1.7rem;
+}
+
+header h1 {
+  font-weight: 800;
+  font-size: var(--fs-heading);
+  line-height: 4.8rem;
+
+}
+
+main {
+  display: grid;
+  gap: 3.2rem;
+
+  animation: downtop 1s 500ms backwards;
+}
+
+.card {
+  position: relative;
+  font-family: var(--ff-texting);
+}
+
+.card img {
+  height: 41.6rem;
+  object-fit: cover;
+
+  border-radius: 0.6rem;
+
+  transition: all 200ms;
+
+  filter: brightness(0.3);
+  /* transition-property: transform;
+  transition-duration: 210ms; */
+  /* transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); */
+  /* transition-delay: 190ms; */
+
+  /* margin-bottom: 3.2rem; */
+}
+
+.card img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.card h2 {
+  position: absolute;
+  bottom: 5.2rem;
+  left: 2.8rem;
+
+  font-size: var(--fs-heading-sm);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+} 
+
+.card h2 span {
+  border-radius: 2rem;
+  background-color: var(--fc-primary);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--fc-secondary-dark);
+  padding: 0 1.6rem;
+  height: 3.8rem;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+/* header {
+  animation: topdown 1s;
+  /* Utilizando essa propriedade abaixo, posso definir que a minha animação vai terminar quando chegar a 100% ao invés de resetar */
+  /* animation-fill-mode: forwards; */
+  /* Começa de cima para baixo - animation-direction: reverse;  */
+  /* Leva o tempo que eu colocar antes de começar a animação - animation-delay: 200ms; */
+  /* Nessa propriedade da para alterar a entrada e sainda da animação e controla a velocidade também, e pode se usar a cruva de bezier - animation-time-function: ease; */
+  /* Deixa a animação rodando infinitamente - animation-iteration-count: infinite; */
+  /* Vai parar minha animação mas se houver um :hover e colocar o play-state como running, assim que passar o mouse em cima roda minha animação - animation-play-state: paused; */
+  /* header:hover {
+  animation-play-state: running;
+} */
+
+
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* @keyframes rightleft {
+  0% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes leftright {
+  0% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+} */
+
+@media (min-width: 700px) {
+
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (min-width: 930px) {
+
+  main {
+    grid-template-areas: "A B B"
+    "C C D";
+  }
+
+  main div:nth-child(1) {
+    grid-area: A;
+  }
+
+  main div:nth-child(2) {
+    grid-area: B;
+  }
+
+  main div:nth-child(3) {
+    grid-area: C;
+  }
+
+  main div:nth-child(4) {
+    grid-area: D;
+  }
+}
